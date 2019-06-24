@@ -48,9 +48,18 @@ class Team{
 				Team team = new Team();
 				lista.add(team);
 			}else if(op == 2) {
-				for(int cont2 = 0;cont2<cont;cont2++) {
-					
+				for(int i = 0;i<cont;i++) {
+					for(int j = 0;j<cont;j++) {
+						if(lista[i].pontuaçãoFinal < lista[j].pontuaçãoFinal) {
+							Team tmp = lista[i];
+							lista[i] = lista[j];
+							lista[j] = tmp;
+						}
+					}
 				}
+				System.out.println("A colocação final ficou: ")
+				for(int i = 0;i<cont;i++)
+					System.out.println(" " + Integer.toString(i+1) + "º colocado : " + lista[i].nome + " com " + lista[i].pontuaçãoFinal + " pontos no total.")
 			}else {
 				System.out.println("[ERRO] Digite uma opção válida:");
 				continue;
