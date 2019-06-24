@@ -33,7 +33,7 @@ class Team{
 	}
 	
 }
- class Dcoder{ 
+ class TalentShow{ 
 	 public static void main(String args[]){ 	
 		ArrayList<Team> lista = new ArrayList();
 		
