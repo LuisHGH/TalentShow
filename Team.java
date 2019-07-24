@@ -1,9 +1,9 @@
 import java.util.*;
  //Compiler version JDK 1.8
 class Team{
-	int rdP;//Reação do público
-	int qdA;//Qualidade da Apresentação
-	int feC;//Figurino e Caracterização
+	int rdP; //Reação do público
+	int qdA; //Qualidade da Apresentação
+	int feC; //Figurino e Caracterização
 	int pontuaçãoFinal;
 	String nome;
 	ArrayList<String> participantes = new ArrayList();
