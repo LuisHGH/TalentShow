@@ -14,11 +14,11 @@ class Team{
 	}
 	public String toString(){
 		return this.nome;
-	}	
+	}
 }
- class TalentShow{ 
-	 public static void main(String args[]){ 	
-		ArrayList<Team> lista = new ArrayList();		
+ class TalentShow{
+	 public static void main(String args[]){
+		ArrayList<Team> lista = new ArrayList();
 		Scanner teclado = new Scanner (System.in);
 		System.out.println("Bem vindo ao Talent Show Points Administrator:");
 		for(int cont = 0;op != 2;cont++) {
@@ -26,6 +26,47 @@ class Team{
 			System.out.println(" 1 - Adicionar  uma equipe\n 2 - Mostrar a classificação final\n ");
 			int op = teclado.nextInt();
 			if(op == 1){
+				System.out.println("Digite o nome da equipe:");
+				teclado.nextLine();
+				String nome = teclado.nextLine();
+				System.out.println("Digite os nomes dos participantes e 0 quando tiver terminado:")
+				ArrayList<String> part;
+				int[] reactions;
+				for(int op = 1;op != 0;){
+					part.add(teclado.nextLine());
+					System.out.println("Digite o nome do próximo participante ou 0 se tiver terminado:")
+				}
+				for(int cont = 0 ;cont < 4 ;cont++){
+					System.out.print("Digite os pontos de ");
+					if(cont == 0)
+						System.out.println("Criatividade (de 0 a 5):");
+					else if(cont == 1)
+						System.out.println("Figurino (de 0 a 5):");
+					else if(cont == 2)
+						System.out.println("Reação do Público (de 0 a 5):");
+					else if(cont == 3)
+						System.out.println("Qualidade (de 0 a 5):");
+					else
+						break;
+					reactions[cont] = teclado.nextInt();
+					teclado.nextLine();
+					if(reactions[0] < 0 || reactions > 5){
+						System.out.println("ERRO!!! Opção inválida: (");
+						if(cont == 0)
+							System.out.println("Criatividade deve ser pontuada de 0 a 5):");
+						else if(cont == 1)
+							System.out.println("Figurino deve ser pontuada de 0 a 5):");
+						else if(cont == 2)
+							System.out.println("Reação do Público deve ser pontuada de 0 a 5):");
+						else if(cont == 3)
+							System.out.println("Qualidade deve ser pontuada de 0 a 5):");
+					cont--;
+					continue;
+					}
+				}
+
+
+
 				Team team = new Team();
 				lista.add(team);
 			}else if(op == 2) {
@@ -42,7 +83,7 @@ class Team{
 				System.out.println("[ERRO] Digite uma opção válida:");
 				continue;
 			}
-				
+
 		}
 	 }
 }
