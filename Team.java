@@ -27,15 +27,18 @@ class Team{
 			int op = teclado.nextInt();
 			if(op == 1){
 				System.out.println("Digite o nome da equipe:");
+				//1
 				teclado.nextLine();
 				String nome = teclado.nextLine();
 				System.out.println("Digite os nomes dos participantes e 0 quando tiver terminado:")
 				ArrayList<String> part;
 				int[] reactions;
+				//2
 				for(int op = 1;op != 0;){
 					part.add(teclado.nextLine());
 					System.out.println("Digite o nome do próximo participante ou 0 se tiver terminado:")
 				}
+				//3 *1
 				for(int cont = 0 ;cont < 4 ;cont++){
 					System.out.print("Digite os pontos de ");
 					if(cont == 0)
@@ -49,7 +52,9 @@ class Team{
 					else
 						break;
 					reactions[cont] = teclado.nextInt();
+					//*2
 					teclado.nextLine();
+					//4
 					if(reactions[0] < 0 || reactions > 5){
 						System.out.println("ERRO!!! Opção inválida: (");
 						if(cont == 0)
@@ -64,9 +69,7 @@ class Team{
 					continue;
 					}
 				}
-
-
-
+				//5
 				Team team = new Team();
 				lista.add(team);
 			}else if(op == 2) {
