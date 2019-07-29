@@ -25,18 +25,22 @@ class Team{
 			System.out.println("\nDigite qual das opções você deseja:");
 			System.out.println(" 1 - Adicionar  uma equipe\n 2 - Mostrar a classificação final\n ");
 			int op = teclado.nextInt();
+			teclado.nextLine();
 			if(op == 1){
 				System.out.println("Digite o nome da equipe:");
 				//1
-				teclado.nextLine();
 				String nome = teclado.nextLine();
 				System.out.println("Digite os nomes dos participantes e 0 quando tiver terminado:")
 				ArrayList<String> part;
 				int[] reactions;
 				//2
-				for(int op = 1;op != 0;){
-					part.add(teclado.nextLine());
-					System.out.println("Digite o nome do próximo participante ou 0 se tiver terminado:")
+				for(String op = "";op != "0";){
+					if (op != "0"){
+						part.add(op);
+						System.out.println("Digite o nome do próximo participante ou 0 se tiver terminado:");
+					}
+					else
+						break;
 				}
 				//3 *1
 				for(int cont = 0 ;cont < 4 ;cont++){
@@ -55,7 +59,7 @@ class Team{
 					//*2
 					teclado.nextLine();
 					//4
-					if(reactions[0] < 0 || reactions > 5){
+					if(reactions[cont] < 0 || reactions[cont] > 5){
 						System.out.println("ERRO!!! Opção inválida: (");
 						if(cont == 0)
 							System.out.println("Criatividade deve ser pontuada de 0 a 5):");
@@ -70,7 +74,7 @@ class Team{
 					}
 				}
 				//5
-				Team team = new Team();
+				Team team = new Team(nome,part,reactions);
 				lista.add(team);
 			}else if(op == 2) {
 				List l = lista
