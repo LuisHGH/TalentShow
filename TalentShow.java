@@ -1,21 +1,6 @@
 import java.util.*;
 import static java.util.Collectors.*;
  //Compiler version JDK 1.8
-class Team{
-	int[] react;
-	int soma;
-	String nome;
-	ArrayList<String> part;
-	public Team(String nome, ArrayList<String> part, int[] reactions){
-		this.nome = nome;
-		this.part = part;
-		this.react = reactions;
-		for(int i=0; i < reactions.size; i++) this.soma += reactions[i];
-	}
-	public String toString(){
-		return this.nome;
-	}	
-}
  class TalentShow{ 
 	 public static void main(String args[]){ 	
 		ArrayList<Team> lista = new ArrayList();		
