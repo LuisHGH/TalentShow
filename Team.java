@@ -1,3 +1,8 @@
+package TalentShow;
+
+import java.util.ArrayList;
+import java.util.Collectors;
+
 class Team{
 	int react[], soma;
 	String nome;
