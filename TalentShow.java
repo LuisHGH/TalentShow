@@ -6,7 +6,7 @@ import java.util.stream.*;
 class TalentShow{
   public static void main(String args[]){
    ArrayList<Team> lista = new ArrayList<Team>();
-   Scanner teclado = new Scanner (System.in);
+   Scanner teclado = new Scanner(System.in);
    System.out.println("Bem vindo ao Talent Show Points Administrator:");
    System.out.println("\nDigite qual das opções você deseja:");
    System.out.println(" 1 - Adicionar  uma equipe\n 2 - Mostrar a classificação final\n");
@@ -20,6 +20,7 @@ class TalentShow{
      }else {
        System.out.println("[ERRO] Digite uma opção válida:");
      }
+      System.out.println("\n 1 - Adicionar  uma equipe\n 2 - Mostrar a classificação final\n");
    }
    teclado.close();
    }
@@ -27,12 +28,14 @@ class TalentShow{
      System.out.println("Digite o nome da equipe:");
      String nome = teclado.nextLine();
      System.out.println("Digite os nomes dos participantes e uma linha em branco quando tiver terminado:");
-     ArrayList<String> part =  new ArrayList<String>();
-     for(String n = teclado.nextLine(); !n.isEmpty(); n = teclado.nextLine()) part.add(n);
+     ArrayList<String> part = new ArrayList<String>();
+     for(String n = teclado.nextLine(); !n.isEmpty(); n = teclado.nextLine()){
+       part.add(n);
+     }
      int[] reactions = new int[4];
      for(int i = 0; i < 4; i++){
-       try {
-         System.out.print("\nDigite um valor (de 0 a 5) para " + Team.getPontos()[i] + ": ");
+       System.out.print("Digite um valor (de 0 a 5) para " + Team.getPontos()[i] + ": ");
+       if(teclado.hasNextInt()){
          int n = teclado.nextInt();
          teclado.nextLine();
          if(n < 0 || n > 5){
@@ -42,8 +45,10 @@ class TalentShow{
          }
          reactions[i] = n;
        }
-       catch(RuntimeException q){
+       else {
          System.out.println("[ERRO] Isso não é um número.");
+         teclado.nextLine();
+         i--;
        }
      }
      System.out.println("Time " + nome + " criado.");
@@ -52,14 +57,14 @@ class TalentShow{
    public static void printWinner(List<Team> l){
      l = l
      .stream()
-     .sorted( (x, y) -> x.getTotal() - y.getTotal() )
+     .sorted( (x, y) -> -(x.getTotal() - y.getTotal()) )
      .collect(Collectors.toList());
      System.out.println("------------------");
      for(int i=0; i < l.size(); i++) {
        System.out.println(String.valueOf(i+1) + "º lugar: " + l.get(i)+"\n\nParticipantes:");
-       for(int j=0; j < l.get(i).size()-1; j++) System.out.println(" -"+l.get(i).getParticipant(j));
+       for(int j=0; j < l.get(i).size(); j++) System.out.println(" -"+l.get(i).getParticipant(j));
        System.out.println("\nTotal: " + l.get(i).getTotal() + "\n");
-       for(int j=0; j < l.get(i).length()-1; j++) System.out.println("Valor de " + Team.getPontos()[j] + ": " + String.valueOf(l.get(i).getPoint(j)));
+       for(int j=0; j < l.get(i).length(); j++) System.out.println("Valor de " + Team.getPontos()[j] + ": " + String.valueOf(l.get(i).getPoint(j)));
        System.out.println("\n------------------\n");
      }
   }
