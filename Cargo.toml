@@ -1,0 +1,13 @@
+[package]
+name = "talent_show"
+version = "0.1.0"
+authors = ["Luis Henrique Gomes Higino <luishenriquegh2701@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+
+[[bin]]
+name = "talent_show"
+path = "src/main.rs"
