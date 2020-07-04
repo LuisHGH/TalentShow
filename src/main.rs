@@ -17,7 +17,7 @@ fn main() {
     }
 
 }
-fn read_line(string: &str,) -> String{
+fn read_line(string: &str) -> String{
     println!("{}", string);
     let mut buffer = String::new();
     io::stdin()
